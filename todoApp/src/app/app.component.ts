@@ -16,4 +16,10 @@ export class AppComponent {
   getItems() {
     return this.model.items.filter(item => item.action == false);
   }
+
+  addItem(value) {
+    if(value!=""){ 
+      this.model.items.push(new TodoItem(value, false));
+    }
+  }
 }
