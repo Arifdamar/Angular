@@ -31,10 +31,17 @@ export class MovieService {
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     }
+    this.loggingService.add('MovieService: updated ' + movie.name);
     return this.http.put<Movie>(this.apiMoviesUrl, movie, httpOptions);
   }
 
   add(movie: Movie): Observable<Movie>{
+    this.loggingService.add('MovieService: ' + movie.name + ' added');
     return this.http.post<Movie>(this.apiMoviesUrl, movie);
+  }
+
+  delete(movie: Movie): Observable<Movie>{
+    this.loggingService.add('MovieService: ' + movie.name + ' deleted');
+    return this.http.delete<Movie>(this.apiMoviesUrl + '/' + movie.id);
   }
 }

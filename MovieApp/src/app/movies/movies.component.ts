@@ -38,4 +38,9 @@ export class MoviesComponent {
         } as Movie)
         .subscribe(movie => this.movies.push(movie));
     }
+
+    delete(movieToDelete: Movie): void {
+        this.movies = this.movies.filter(movie => movieToDelete !== movie);
+        this.movieService.delete(movieToDelete).subscribe();
+    }
 }
