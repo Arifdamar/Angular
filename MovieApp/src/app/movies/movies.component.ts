@@ -11,7 +11,7 @@ export class MoviesComponent {
     movies: Movie[];
     selectedMovie: Movie;
 
-    constructor(private movieService: MovieService){
+    constructor(private movieService: MovieService) {
 
     }
 
@@ -23,7 +23,10 @@ export class MoviesComponent {
         this.selectedMovie = movie;
     }
 
-    getMovies():void{
-        this.movies = this.movieService.getMovies();
+    getMovies(): void {
+        this.movieService.getMovies()
+            .subscribe(movies => {
+                this.movies = movies;
+            });
     }
 }
