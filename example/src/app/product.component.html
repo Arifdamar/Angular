@@ -1,3 +1,11 @@
 <div class="bg-primary text-white m-2 p-2">
     There are {{ model.getProducts().length }} in repository
 </div>
+
+<div>
+    <h2> {{ product.name }} </h2>
+    <h2 [textContent] = "product.name"></h2>
+
+    <img src="assets/img/{{ product.imageUrl }}" width="500">
+    <img [src]="'assets/img/' + product.imageUrl" width="500">
+</div>
