@@ -5,42 +5,16 @@ import { Product } from './product.model';
 @Component({
     selector: 'app',
     template: `
-            <h4> Lower-Upper-Title CasePipe </h4>
-            <p> {{ title }} </p>
-            <p> {{ title | lowercase }} </p>
-            <p> {{ title | uppercase }} </p>
-            <p> {{ title | titlecase }} </p>
-
-            <h4> Date Pipe </h4>
-            <p> {{ today }} </p>
-            <p> {{ today | date }} </p>
-            <p> {{ today | date: 'fullDate' }} </p>
-            <p> {{ today | date: 'medium' }} </p>
-            <p> {{ today | date: 'shortTime' }} </p>
-            <p> {{ today | date: 'h:mm:ss' }} </p>
-
-            <h4> Decimal Pipe </h4>
-            <p> {{ students }} </p>
-            <p> {{ students | number }} </p>
-            <p> {{ price | number }} </p>
-            <p> {{ price | number: '1.1-6' }} </p>
-
-            <h4> Currency Pipe </h4>
-            <p> {{ price | currency }} </p>
-            <p> {{ price | currency: 'EUR' }} </p>
-
-            <h4> Percent Pipe</h4>
-            <p> {{ completed | percent }} </p>
-            <p> {{ completed | percent: '2.2-2' }} </p>
+    {{ text | summary }}
+    <br>
+    {{ text | summary: 50 }}
+    <br>
+    {{ text | summary: 100 }}
             `,
     styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
 
-    today: number = Date.now();
-    title: string = "Angular Course";
-    students: number = 21536;
-    price: number = 395.94836;
-    completed: number = 0.26;
+    text = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero sequi et placeat, accusamus rem, necessitatibus cum delectus odio ex aspernatur saepe laboriosam modi, iure doloremque facere. Est fuga expedita illo?";
 
 }
