@@ -11,6 +11,16 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = true;
 
+    onSubmit($event){
+        $event.stopPropagation();
+        console.log("Button clicked!");
+        console.log($event);
+    }
+
+    onDivClicked(){
+        console.log("Div clicked!");
+    }
+
     getClasses(id: number): string {
         let product: Product = this.model.getProductById(id);
         return (product.price <= 6000 ? "bg-info" : "bg-secondary") + " m-2 p-2";
