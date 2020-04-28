@@ -25,4 +25,15 @@ export class ProductComponent {
         }
     }
 
+    color: string = this.model.getProductById(1).price <= 6000 ? "green" : "red";
+    fontSize: string = "25px";
+
+    getStyles(id: number){
+        let product: Product = this.model.getProductById(id);
+        return {
+            fontSize: "25px",
+            color: product.price <= 6000 ? "green" : "red"
+        }
+    }
+
 }
