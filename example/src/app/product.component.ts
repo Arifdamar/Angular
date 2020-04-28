@@ -11,13 +11,17 @@ export class ProductComponent {
     model: ProductRepository = new ProductRepository();
     disabled = true;
 
-    onSubmit($event){
+    onKeyup(value) {
+        console.log(value);
+    }
+
+    onSubmit($event) {
         $event.stopPropagation();
         console.log("Button clicked!");
         console.log($event);
     }
 
-    onDivClicked(){
+    onDivClicked() {
         console.log("Div clicked!");
     }
 
@@ -28,7 +32,7 @@ export class ProductComponent {
 
     getClassMap(id: number): Object {
         let product: Product = this.model.getProductById(id);
-        return { 
+        return {
             "bg-info": product.price <= 6000,
             "bg-secondary": product.price > 6000,
             "text-center text-white": product.name == "Samsung Galaxy S9+"
@@ -38,7 +42,7 @@ export class ProductComponent {
     color: string = this.model.getProductById(1).price <= 6000 ? "green" : "red";
     fontSize: string = "25px";
 
-    getStyles(id: number){
+    getStyles(id: number) {
         let product: Product = this.model.getProductById(id);
         return {
             fontSize: "25px",
