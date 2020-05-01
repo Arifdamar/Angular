@@ -1,10 +1,13 @@
-<ul class="list-group m-5">
-    <li class="list-group-item" *ngFor="let product of model.getProducts(); index as i; first as f; last as l; odd as o; even as e;">
-        {{ i }} -- {{ product.name }}
-        <br>
-        <span *ngIf="f" class="badge badge-primary">First</span>
-        <span *ngIf="l" class="badge badge-danger">Last</span>
-        <span *ngIf="o" class="badge badge-info">Odd</span>
-        <span *ngIf="e" class="badge badge-warning">Even</span>
+<div class="m-5">
+
+    <button class="btn btn-primary" (click)="addProduct()">Add Product</button>
+
+  <ul class="list-group mt-5">
+    <li class="list-group-item"
+      *ngFor="let product of model.getProducts(); index as i; first as f; last as l; odd as o; even as e;">
+      {{ product.name }}
+      <button class="btn btn-danger" (click)="deleteProduct(product)">Delete</button>
+      <button class="btn btn-warning" (click)="updateProduct(product)">Update</button>
     </li>
-</ul>
+  </ul>
+</div>

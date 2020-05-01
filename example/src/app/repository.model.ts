@@ -15,6 +15,15 @@ export class ProductRepository {
         return this.products;
     }
 
+    addProduct(product: Product): void {
+        this.products.push(product);
+    }
+
+    deleteProduct(product: Product): void {
+        let index = this.products.indexOf(product);
+        this.products.splice(index, 1);
+    }
+
     getProductCount(): number {
         return this.products.length;
     }

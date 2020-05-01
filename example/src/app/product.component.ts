@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
+import { Product } from './product.model';
 
 @Component({
     selector: 'app',
@@ -10,6 +11,15 @@ export class ProductComponent {
 
     model: ProductRepository = new ProductRepository();
     
-    productName: string = this.model.getProductById(1).name;
+    addProduct(): void {
+        this.model.addProduct(new Product(6, "Samsung Galaxy S11", "The very best phone", "s10.jpg", 8000))
+    }
 
+    deleteProduct(productTODelete: Product): void {
+        this.model.deleteProduct(productTODelete)
+    }
+
+    updateProduct(product: Product): void {
+        product.name += "updated";
+    }
 }
