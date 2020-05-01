@@ -1,24 +1,15 @@
-<div *ngIf="model.getProducts().length>0; then productList else noProducts">
-
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductCount()">
+    <span *ngSwitchCase="0">There are no products</span>
+    <span *ngSwitchCase="1">There are 1 products</span>
+    <span *ngSwitchCase="2">There are 2 products</span>
+    <span *ngSwitchDefault>There are many products</span>
 </div>
 
-
-<ng-template #productList>
-  <div class="bg-primary text-white m-2 p-2">
-    There are {{ model.getProducts().length }} products in the repository.
-  </div>
-</ng-template>
-
-<ng-template #noProducts>
-  <div class="bg-warning text-white m-2 p-2">
-    There are no products in the repository.
-  </div>
-</ng-template>
-
-<div [hidden]="model.getProducts().length==0" class="bg-primary text-white m-2 p-2">
-  There are {{ model.getProducts().length }} products in the repository.
+<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(5).name">
+    <span *ngSwitchCase="productName">Samsung Galaxy S8</span>
+    <span *ngSwitchCase="'Samsung Galaxy S8+'">Samsung Galaxy S8+</span>
+    <span *ngSwitchCase="'Samsung Galaxy S9'">Samsung Galaxy S9</span>
+    <span *ngSwitchCase="'Samsung Galaxy S9+'">Samsung Galaxy S9+</span>
+    <span *ngSwitchCase="'Samsung Galaxy S10'">Samsung Galaxy S10</span>
 </div>
 
-<div [hidden]="model.getProducts().length!=0" class="bg-warning text-white m-2 p-2">
-  There are no products in the repository.
-</div>
