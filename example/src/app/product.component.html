@@ -1,15 +1,10 @@
-<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductCount()">
-    <span *ngSwitchCase="0">There are no products</span>
-    <span *ngSwitchCase="1">There are 1 products</span>
-    <span *ngSwitchCase="2">There are 2 products</span>
-    <span *ngSwitchDefault>There are many products</span>
-</div>
-
-<div class="bg-info m-2 p-2" [ngSwitch]="model.getProductById(5).name">
-    <span *ngSwitchCase="productName">Samsung Galaxy S8</span>
-    <span *ngSwitchCase="'Samsung Galaxy S8+'">Samsung Galaxy S8+</span>
-    <span *ngSwitchCase="'Samsung Galaxy S9'">Samsung Galaxy S9</span>
-    <span *ngSwitchCase="'Samsung Galaxy S9+'">Samsung Galaxy S9+</span>
-    <span *ngSwitchCase="'Samsung Galaxy S10'">Samsung Galaxy S10</span>
-</div>
-
+<ul class="list-group m-5">
+    <li class="list-group-item" *ngFor="let product of model.getProducts(); index as i; first as f; last as l; odd as o; even as e;">
+        {{ i }} -- {{ product.name }}
+        <br>
+        <span *ngIf="f" class="badge badge-primary">First</span>
+        <span *ngIf="l" class="badge badge-danger">Last</span>
+        <span *ngIf="o" class="badge badge-info">Odd</span>
+        <span *ngIf="e" class="badge badge-warning">Even</span>
+    </li>
+</ul>
