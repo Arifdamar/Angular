@@ -26,12 +26,7 @@ export class AdminProductsComponent {
     this.selectedProduct = product;
   }
 
-  saveChanges(name, price, url, description): void {
-    const product = this.model.getProductById(this.selectedProduct.id);
-    product.name = name;
-    product.price = Number(price);
-    product.imageUrl = url;
-    product.description = description;
+  saveChanges(): void {
     this.selectedProduct = null;
   }
 
