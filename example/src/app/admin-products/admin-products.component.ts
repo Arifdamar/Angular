@@ -11,15 +11,20 @@ export class AdminProductsComponent {
 
   products: Product[];
   model: ProductRepository;
-  selectedProduct: string;
+  selectedProduct: Product;
 
   constructor() {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
+    this.selectedProduct = new Product(null,'','','',null);
   }
 
   getSelected(product: Product):boolean {
-    return this.selectedProduct === product.name;
+    return this.selectedProduct.id === product.id;
+  }
+
+  updateProduct(product: Product):void {
+    this.selectedProduct = product;
   }
 
 }
