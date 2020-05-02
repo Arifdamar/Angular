@@ -11,12 +11,15 @@ export class AdminProductsComponent {
 
   products: Product[];
   model: ProductRepository;
-  selectedProduct: Product;
+  selectedProduct: string;
 
   constructor() {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
-    this.selectedProduct = new Product();
+  }
+
+  getSelected(product: Product):boolean {
+    return this.selectedProduct === product.name;
   }
 
 }
