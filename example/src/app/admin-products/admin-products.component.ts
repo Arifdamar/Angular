@@ -7,14 +7,16 @@ import { Product } from '../product.model';
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.css']
 })
-export class AdminProductsComponent{
+export class AdminProductsComponent {
 
   products: Product[];
   model: ProductRepository;
+  selectedProduct: Product;
 
-  constructor() { 
+  constructor() {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
+    this.selectedProduct = new Product();
   }
 
 }
