@@ -11,15 +11,13 @@ export class ProductComponent {
 
     model: ProductRepository = new ProductRepository();
     
-    addProduct(): void {
-        this.model.addProduct(new Product(6, "Samsung Galaxy S11", "The very best phone", "s10.jpg", 8000))
+    newProduct: Product = new Product();
+
+    get jsonProduct():string {
+        return JSON.stringify(this.newProduct);
+    }
+    addProduct(product: Product): void {
+        console.log('new product: ' + this.jsonProduct);
     }
 
-    deleteProduct(productTODelete: Product): void {
-        this.model.deleteProduct(productTODelete)
-    }
-
-    updateProduct(product: Product): void {
-        product.name += "updated";
-    }
 }
