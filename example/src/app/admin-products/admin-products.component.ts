@@ -16,15 +16,23 @@ export class AdminProductsComponent {
   constructor() {
     this.model = new ProductRepository();
     this.products = this.model.getProducts();
-    this.selectedProduct = new Product(null,'','','',null);
   }
 
   getSelected(product: Product):boolean {
-    return this.selectedProduct.id === product.id;
+    return this.selectedProduct == product;
   }
 
   updateProduct(product: Product):void {
     this.selectedProduct = product;
+  }
+
+  saveChanges(name, price, url, description): void {
+    const product = this.model.getProductById(this.selectedProduct.id);
+    product.name = name;
+    product.price = Number(price);
+    product.imageUrl = url;
+    product.description = description;
+    this.selectedProduct = null;
   }
 
 }

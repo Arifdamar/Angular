@@ -1,9 +1,10 @@
 <div class="container p-3">
   <div class="row">
     <div class="col-md-7">
-      <div class="bg-info text-white p-2">
+      <div class="bg-info text-white p-2" *ngIf="selectedProduct">
         Selected Product: {{ selectedProduct.name || '(None Selected)'}}
       </div>
+
       <table class="table table-sm table-bordered">
         <thead>
           <tr>
@@ -31,10 +32,10 @@
         </tbody>
       </table>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5" *ngIf="selectedProduct">
       <div class="form-group">
         <label for="ProductName">Product Name</label>
-        <input #pName [value]="selectedProduct.name" (keyup.enter)="selectedProduct=pName.value" type="text" class="form-control" id="ProductName">
+        <input #pName [value]="selectedProduct.name" type="text" class="form-control" id="ProductName">
       </div>
       <div class="form-group">
         <label for="ProductPrice">Product Price</label>
@@ -48,6 +49,7 @@
         <label for="ProductDescription">Product Description</label>
         <textarea #pDescription [value]="selectedProduct.description" type="text" class="form-control" id="ProductDescription"></textarea>
       </div>
+      <button class="btn btn-primary" (click)="saveChanges(pName.value,pPrice.value,pImageUrl.value,pDescription.value)">Save Changes</button>
     </div>
   </div>
 </div>
