@@ -16,8 +16,13 @@ export class ProductComponent {
     get jsonProduct():string {
         return JSON.stringify(this.newProduct);
     }
+
     addProduct(product: Product): void {
         console.log('new product: ' + this.jsonProduct);
+    }
+
+    log(m): void {
+        console.log(m);
     }
 
 }
