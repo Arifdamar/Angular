@@ -42,4 +42,9 @@ export class ProductComponent {
         return messages;
     }
 
+    submitForm(form) {
+        console.log(form);
+        
+    }
+
 }
