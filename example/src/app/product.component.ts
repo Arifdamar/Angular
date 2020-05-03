@@ -21,4 +21,25 @@ export class ProductComponent {
         console.log('new product: ' + this.jsonProduct);
     }
 
+    getValidationErrors(state: any) {
+        let controlName: string = state.name;
+        let messages: string[] = [];
+
+        if(state.errors) {
+            for(let errorName in state.errors) {
+                switch(errorName){
+                    case 'required':
+                        messages.push(`You must enter a ${controlName}.`);
+                        break;
+                    case 'minlength':
+                        messages.push(`Minimun character length for ${controlName} is ${state.errors.minlength.requiredLength}`);
+                        break;
+                    case 'pattern':
+                        messages.push(`${controlName} contains invalid characters`);
+                }
+            }
+        }
+        return messages;
+    }
+
 }
