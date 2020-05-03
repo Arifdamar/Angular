@@ -21,8 +21,4 @@ export class ProductComponent {
         console.log('new product: ' + this.jsonProduct);
     }
 
-    log(m): void {
-        console.log(m);
-    }
-
 }
