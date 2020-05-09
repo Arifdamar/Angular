@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
-import { NgForm, FormControl } from '@angular/forms';
+import { NgForm, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'app',
@@ -9,12 +9,23 @@ import { NgForm, FormControl } from '@angular/forms';
     styleUrls: ['./product.component.css']
 })
 export class ProductComponent {
-    name = new FormControl('Samsung Galaxy S10');
-    price = new FormControl('1000');
-    imageUrl = new FormControl('s10.jpg');
-    description = new FormControl('Good phone');
+    productForm = new FormGroup({
+        name: new FormControl('Samsung Galaxy S10'),
+        price: new FormControl('1000'),
+        imageUrl: new FormControl('s10.jpg'),
+        description: new FormControl('Good phone')
+    })
 
-    updateName() {
-        this.name.setValue('Samsung Galaxy S10+');
+    onSubmit() {
+        console.log(this.productForm.value);
+    }
+
+    updateProduct() {
+        this.productForm.patchValue({
+            name: 'Samsung Galaxy S10+',
+            price: '2000',
+            imageUrl: 's10+.jpg',
+            description: 'Better phone'
+        })
     }
 }
