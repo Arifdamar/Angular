@@ -1,81 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8">
-      <div class="m-3">
-        <form #form="ngForm" (ngSubmit)="submitForm(form)">
+<form>
 
-          <div class="bg-danger rounded-lg text-white p-3 my-2" *ngIf="formSubmitted && form.invalid">
-            Error!
-            <ul>
-              <li *ngFor="let error of getFormValidationErrors(form)">
-                {{ error }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="bg-info text-white m-2 p-2">
-            {{ jsonProduct }}
-          </div>
-
-          <div class="form-group">
-            <label>Name</label>
-            <input required minlength="3" pattern="^[A-Za-z0-9 ]+$" [(ngModel)]="newProduct.name" name="name"
-              #name="ngModel" type="text" class="form-control">
-            <div class="alert alert-danger" *ngIf="(formSubmitted || name.dirty) && name.invalid">
-              <ul>
-                <li *ngFor="let error of getValidationErrors(name)">
-                  {{ error }}
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label>Price</label>
-            <input required [(ngModel)]="newProduct.price" name="price" #price="ngModel" type="text"
-              class="form-control">
-          </div>
-          <div class="alert alert-danger" *ngIf="(formSubmitted || price.dirty) && price.invalid">
-            <ul>
-              <li *ngFor="let error of getValidationErrors(price)">
-                {{ error }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="form-group">
-            <label>ImageUrl</label>
-            <input required [(ngModel)]="newProduct.imageUrl" name="imageUrl" #imageUrl="ngModel" type="text"
-              class="form-control">
-          </div>
-          <div class="alert alert-danger" *ngIf="(formSubmitted || imageUrl.dirty) && imageUrl.invalid">
-            <ul>
-              <li *ngFor="let error of getValidationErrors(imageUrl)">
-                {{ error }}
-              </li>
-            </ul>
-          </div>
-
-          <div class="form-group">
-            <label>Description</label>
-            <textarea required [(ngModel)]="newProduct.description" name="description" #description="ngModel"
-              type="text" class="form-control"></textarea>
-          </div>
-          <div class="alert alert-danger" *ngIf="(formSubmitted || description.dirty) && description.invalid">
-            <ul>
-              <li *ngFor="let error of getValidationErrors(description)">
-                {{ error }}
-              </li>
-            </ul>
-          </div>
-
-          <button
-          class="btn btn-primary"
-          type="submit"
-          [disabled]="formSubmitted && form.invalid"
-          [class.btn-secondary]="formSubmitted && form.invalid">Submit</button>
-        </form>
-      </div>
-    </div>
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control">
   </div>
-</div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <input class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Image Url</label>
+    <input class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <input class="form-control">
+  </div>
+
+</form>
