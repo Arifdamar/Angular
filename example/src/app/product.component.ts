@@ -22,8 +22,22 @@ export class ProductComponent {
         console.log('new product: ' + this.jsonProduct);
     }
 
-    getValidationErrors(state: any) {
-        let controlName: string = state.name;
+    getFormValidationErrors(form: NgForm): string[] {
+        let messages: string[] = [];
+
+        Object.keys(form.controls).forEach(k => {
+            console.log(k);
+            console.log(form.controls[k]);
+
+            this.getValidationErrors(form.controls[k], k)
+            .forEach(message => messages.push(message));
+        });
+
+        return messages;
+    }
+
+    getValidationErrors(state: any, key?: string) {
+        let controlName: string = state.name || key;
         let messages: string[] = [];
 
         if(state.errors) {
@@ -46,6 +60,7 @@ export class ProductComponent {
     formSubmitted: boolean = false;
 
     submitForm(form: NgForm) {
+        console.log(form);
         this.formSubmitted = true;
         if(form.valid) {
             this.addProduct(this.newProduct);
