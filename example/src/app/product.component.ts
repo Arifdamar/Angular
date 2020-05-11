@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
-import { NgForm, FormControl, FormGroup } from '@angular/forms';
+import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
     selector: 'app',
@@ -10,11 +10,15 @@ import { NgForm, FormControl, FormGroup } from '@angular/forms';
 })
 export class ProductComponent {
     productForm = new FormGroup({
-        name: new FormControl('Samsung Galaxy S10'),
-        price: new FormControl('1000'),
-        imageUrl: new FormControl('s10.jpg'),
-        description: new FormControl('Good phone')
+        name: new FormControl('', [Validators.required, Validators.minLength(5)]),
+        price: new FormControl('', Validators.required),
+        imageUrl: new FormControl('', Validators.required),
+        description: new FormControl('', Validators.required)
     })
+
+    get name() {
+        return this.productForm.get('name');
+    }
 
     onSubmit() {
         console.log(this.productForm.value);
