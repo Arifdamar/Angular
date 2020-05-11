@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductRepository } from './repository.model';
 import { Product } from './product.model';
 import { NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ImageValidator } from './image.validators';
 
 @Component({
     selector: 'app',
@@ -17,12 +18,20 @@ export class ProductComponent {
             Validators.maxLength(20)
         ]),
         price: new FormControl('', Validators.required),
-        imageUrl: new FormControl('', Validators.required),
+        imageUrl: new FormControl('',
+        [
+            Validators.required,
+            ImageValidator.isValidExtension
+        ]),
         description: new FormControl('', Validators.required)
     })
 
     get name() {
         return this.productForm.get('name');
+    }
+
+    get imageUrl() {
+        return this.productForm.get('imageUrl');
     }
 
     onSubmit() {

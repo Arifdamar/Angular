@@ -21,6 +21,12 @@
     <label>Image Url</label>
     <input class="form-control" formControlName="imageUrl">
   </div>
+  <div *ngIf="imageUrl.touched && imageUrl.invalid" class="alert alert-danger">
+    <ul>
+      <li *ngIf="imageUrl.errors.required">Image Url is required!</li>
+      <li *ngIf="imageUrl.errors.wrongExtension">Wrong image extension!</li>
+      </ul>
+  </div>
 
   <div class="form-group">
     <label>Description</label>
