@@ -12,23 +12,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductComponent } from './products/product/product.component';
 import { UserComponent } from './users/user/user.component';
 import { EditProductComponent } from './products/edit-product/edit-product.component';
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent }, // localhost:4200
-  { path: 'home', component: HomeComponent },
-  {
-    path: 'products', component: ProductsComponent, children: [
-      { path: ':id', component: ProductComponent },
-      { path: ':id/edit', component: EditProductComponent }
-    ]
-  },
-  {
-    path: 'users', component: UsersComponent, children: [
-      { path: ':name', component: UsersComponent }
-    ]
-  },
-  { path: '**', component: NotfoundComponent }
-]
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +28,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
