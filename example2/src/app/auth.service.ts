@@ -1,6 +1,8 @@
 
 export class AuthService {
     loggedIn: boolean = false;
+    redirectUrl: string;
+    
 
     isAuthenticated() {
 

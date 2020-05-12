@@ -8,11 +8,13 @@ import { EditProductComponent } from './products/edit-product/edit-product.compo
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './users/user/user.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { LoginComponent } from './login/login.component';
 
 
 const appRoutes: Routes = [
     { path: '', component: HomeComponent }, // localhost:4200
     { path: 'home', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
     {
         path: 'products', component: ProductsComponent, children: [
             { path: ':id', component: ProductComponent },
