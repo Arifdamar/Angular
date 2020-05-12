@@ -16,10 +16,17 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   loadProducts() {
-    this.router.navigate(['products'], { relativeTo: this.route });
+    this.router.navigate(['/products'], {
+      queryParams: {
+        page: 1
+      }
+    });
   }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+     console.log(params.get('page'));
+    });
   }
 
 }
