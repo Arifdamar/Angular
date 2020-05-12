@@ -10,13 +10,23 @@ import { CategoriesComponent } from './categories/categories.component';
 import { Route } from '@angular/compiler/src/core';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductComponent } from './products/product/product.component';
+import { UserComponent } from './users/user/user.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, // localhost:4200
   { path: 'home', component: HomeComponent },
-  { path: 'products', component: ProductsComponent },
-  { path: 'products/:id', component: ProductComponent },
-  { path: 'users', component: UsersComponent },
+  {
+    path: 'products', component: ProductsComponent, children: [
+      { path: ':id', component: ProductComponent },
+      { path: ':id/edit', component: EditProductComponent }
+    ]
+  },
+  {
+    path: 'users', component: UsersComponent, children: [
+      { path: ':name', component: UsersComponent }
+    ]
+  },
   { path: '**', component: NotfoundComponent }
 ]
 
@@ -28,7 +38,9 @@ const appRoutes: Routes = [
     UsersComponent,
     CategoriesComponent,
     NotfoundComponent,
-    ProductComponent
+    ProductComponent,
+    UserComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
