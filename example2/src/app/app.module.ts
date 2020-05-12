@@ -9,13 +9,15 @@ import { UsersComponent } from './users/users.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { Route } from '@angular/compiler/src/core';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { ProductComponent } from './products/product/product.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, // localhost:4200
-  {path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'products/:id', component: ProductComponent },
   { path: 'users', component: UsersComponent },
-  {path: '**', component: NotfoundComponent}
+  { path: '**', component: NotfoundComponent }
 ]
 
 @NgModule({
@@ -25,7 +27,8 @@ const appRoutes: Routes = [
     ProductsComponent,
     UsersComponent,
     CategoriesComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

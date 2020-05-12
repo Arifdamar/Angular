@@ -2,6 +2,7 @@
 <ul class="list-group">
     <li *ngFor="let p of products" class="list-group-item">
         {{ p.name }}
+        <a [routerLink]="['/products',p.id]">Detail</a>
     </li>
 </ul>
 
